@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Decorations database</title>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:wght@400,600,700"
+    />
+
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo-and-nav">
+        Decorations
+        <nav class="inline-block margin-left">
+          <button id="list-button" class="nav__button nav__button--active">
+            My Decorations
+          </button>
+          <button
+            id="add-button"
+            class="nav__button"
+          >
+            Add Decoration
+          </button>
+          <button id="edit-button" class="nav__button no-display">
+            Edit Decoration
+          </button>
+        </nav>
+      </div>
+
+      <div id="search-group" class="search">
+        <input
+          type="text"
+          placeholder="Find decoration..."
+          class="form__input"
+          id="search_input"
+        />
+        <button class="button button--outlined margin-left inline-block" id="search_button">
+          Search
+        </button>
+        <button class="button button--outlined button--outlined--red margin-left inline-block" id="reset_button">
+          Reset
+        </button>
+      </div>
+    </header>
+    <main id="form-page" class="no-display">
+      <section class="section section--form">
+        <div class="center">
+          <div class="form" id="form__decoration">
+            <h1 class="inline-block" id="form__headline">Add decoration</h1>
+            <label for="from__name">Name</label>
+            <input
+              class="form__input form__input--add"
+              type="text"
+              id="form__name"
+            />
+            <label for="material">Material</label>
+            <input
+              class="form__input form__input--add"
+              type="text"
+              id="form__material"
+            />
+            <label for="form__usage">Usage</label>
+            <select class="form__input--add form__select" id="form__usage">
+              <option value="universal">Universal</option>
+              <option value="outside decoration">Outside decoration</option>
+              <option value="for christmass">For christmass</option>
+              <option value="for windows">For windows</option>
+            </select>
+            <label for="form__amount_avalaible">Avalaible amount</label>
+            <input
+              class="form__input form__input--add"
+              type="text"
+              id="form__amount_avalaible"
+            />
+            <label for="form__colors">Colors</label>
+            <input
+              class="form__input form__input--add"
+              type="text"
+              id="form__colors"
+            />
+            <label for="form__length">Length</label>
+            <input
+              class="form__input form__input--add"
+              type="text"
+              id="form__length"
+            />
+            <label for="form__lamps_per_meter">Lamps per meter</label>
+            <input
+              class="form__input form__input--add"
+              type="text"
+              id="form__lamps_per_meter"
+            />
+            <label for="form__power">Power</label>
+            <input
+              class="form__input form__input--add"
+              type="text"
+              id="form__power"
+            />
+            <label for="form__price">Price</label>
+            <input
+              class="form__input form__input--add"
+              type="text"
+              id="form__price"
+            />
+            <button class="button form__submit" id="form__submit">
+              Submit
+            </button>
+            <div class="modal modal--error flex-self-center no-display" id="modal_error">
+              <span><b>Oh crap!</b><span class="margin-left-s" id="modal_error_text"></span></span>
+              <button class="modal__close" id="modal_close"></button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <main id="list-page">
+      <aside class="aside inline-block">
+        <h2 class="h2 no-margin">Manage decorations</h2>
+        <div class="switch padding-bottom">
+          <span class="switch__label bold-less-emp"
+            >Sort by the most<br />
+            expensive decoration</span
+          >
+          <label class="switch__container margin-left">
+            <input type="checkbox" class="switch__checkbox checkbox--utility" id="switch" />
+            <span class="switch__container__slider"></span>
+          </label>
+        </div>
+        <p class="bold-less-emp">Count total price:</p>
+        <button class="button aside__count-button margin-bottom" id="count_price_button">Count</button>
+        <div class="aside__price-text">
+          Total price:
+          <span class="aside__price-text__price" id="price-text">$0.00</span>
+        </div>
+      </aside>
+      <section class="section">
+        <div class="grid" id="grid"></div>
+      </section>
+    </main>
+    <script src="scripts/model.js"></script>
+    <script src="scripts/script.js"></script>
+    <div id="template" class="no-display">
+      <div class="card">
+        <h3 class="card__name" id="card__name">Test</h3>
+        <p class="card__text">Material: <span id="card__material"></span></p>
+        <p class="card__text">Usage: <span id="card__usage"></span></p>
+        <p class="card__text">
+          Amount avaliable: <span id="card__amount_avalaible"></span>
+        </p>
+        <p class="card__text">Colors: <span id="card__colors"></span></p>
+        <p class="card__text">Length: <span id="card__length"></span></p>
+        <p class="card__text">
+          Lamps per meter: <span id="card__lamps_per_meter"></span>
+        </p>
+        <p class="card__text">Power: <span id="card__power"></span></p>
+        <p class="card__text">
+          Price: <span class="card__price" id="card__price"></span>
+        </p>
+        <div class="card__controls">
+          <button
+            class="button card__controls__button card__controls__button--edit"
+            id="card__edit"
+          >
+            Edit
+          </button>
+          <button
+            class="button card__controls__button card__controls__button--remove"
+            id="card__remove"
+          >
+            Remove
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
