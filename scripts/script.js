@@ -1,48 +1,48 @@
 const decorations = [
-  new ElectricDecoration(
-    "Cheap christmass lights",
-    "plastic",
-    "for christmass",
-    120,
-    "blue,green,red,",
-    150,
-    10,
-    25,
-    120.5
-  ),
-  new ElectricDecoration(
-    "Interested house ilumination",
-    "plastic",
-    "for christmass",
-    40,
-    "yellow, green, red, blue, white,",
-    2500,
-    15,
-    150,
-    1200.0
-  ),
-  new ElectricDecoration(
-    "On window net",
-    "plastic",
-    "for window",
-    99,
-    "yellow,",
-    120,
-    30,
-    20,
-    120.0
-  ),
-  new ElectricDecoration(
-    "Patriotical ilumiation",
-    "plastic",
-    "universal",
-    200,
-    "yellow,blue,",
-    300,
-    20,
-    5,
-    80.0
-  ),
+  // new ElectricDecoration(
+  //   "Cheap christmass lights",
+  //   "plastic",
+  //   "for_christmass",
+  //   120,
+  //   "blue,green,red,",
+  //   150,
+  //   10,
+  //   25,
+  //   120.5
+  // ),
+  // new ElectricDecoration(
+  //   "Interested house ilumination",
+  //   "plastic",
+  //   "for_christmass",
+  //   40,
+  //   "yellow, green, red, blue, white,",
+  //   2500,
+  //   15,
+  //   150,
+  //   1200.0
+  // ),
+  // new ElectricDecoration(
+  //   "On window net",
+  //   "plastic",
+  //   "FOR_WINDOWS",
+  //   99,
+  //   "yellow,",
+  //   120,
+  //   30,
+  //   20,
+  //   120.0
+  // ),
+  // new ElectricDecoration(
+  //   "Patriotical ilumiation",
+  //   "plastic",
+  //   "universal",
+  //   200,
+  //   "yellow,blue,",
+  //   300,
+  //   20,
+  //   5,
+  //   80.0
+  // ),
 ];
 const form_ids_list = {
   name: "String",
@@ -69,7 +69,7 @@ document.getElementById("search_button").onclick = search;
 document.getElementById("reset_button").onclick = resetSearch;
 document.getElementById("count_price_button").onclick = countUpPrice;
 
-window.onload = () =>updateList(decorations);
+window.onload = () => updateList(decorations);
 
 const price_text = document.getElementById("price-text");
 const sort_switch = document.getElementById("switch");
@@ -158,12 +158,13 @@ function hideModal() {
 }
 
 function updateList(decoration_list = decorations) {
+  getAllDecoratonsFromServer();
   let cardTemplate = document.querySelector("#template").children[0];
   console.log(cardTemplate.length);
   const targetChildren = [];
   decoration_list.map((decoration, index) => {
     let newNode = cardTemplate.cloneNode(true);
-    for (const [id, value] of Object.entries(decoration)) {
+    for (const [id, value] of decoration.getEntries()) {
       newNode.querySelector("#card__" + id).innerHTML = value;
     }
     //Edit button
@@ -275,6 +276,16 @@ function switch_sort_decoration() {
 }
 
 function countUpPrice() {
-  let price = decorations.reduce((a, val) => a+val.price, 0);
-  price_text.innerHTML = '$ ' + price.toFixed(2);
+  let price = decorations.reduce((a, val) => a + val.price, 0);
+  price_text.innerHTML = "$ " + price.toFixed(2);
+}
+
+async function getAllDecoratonsFromServer() {
+  try {
+    await fetch("/decorations")
+      .then((response) => response.json())
+      .then((val) => console.log(val));
+  } catch (error) {
+    console.log(error);
+  }
 }

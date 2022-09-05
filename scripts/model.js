@@ -22,4 +22,11 @@ class ElectricDecoration {
     this.power = power;
     this.price = price;
   }
+
+  //Translate object and format usage
+  getEntries() {
+    let obj = Object.assign({}, this);
+    obj["usage"] = this.usage.toLowerCase().replace("_"," ");
+    return Object.entries(obj);
+  }
 }
