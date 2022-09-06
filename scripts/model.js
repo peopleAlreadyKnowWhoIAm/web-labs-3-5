@@ -10,7 +10,8 @@ class ElectricDecoration {
     length, //Float
     lampsPerMeter, //Integer
     power, //Integer
-    price //Float
+    price, //Float
+    id // Number
   ) {
     this.name = name;
     this.material = material;
@@ -21,12 +22,20 @@ class ElectricDecoration {
     this.lamps_per_meter = lampsPerMeter;
     this.power = power;
     this.price = price;
+    this.id = id;
   }
 
   //Translate object and format usage
+  getCorrectedEntries() {
+    let obj = Object.assign({}, this);
+    delete obj.id;
+    obj["usage"] = this.usage.toLowerCase().replace("_"," ");
+    return Object.entries(obj);
+  }
+
   getEntries() {
     let obj = Object.assign({}, this);
-    obj["usage"] = this.usage.toLowerCase().replace("_"," ");
+    delete obj.id;
     return Object.entries(obj);
   }
 }
