@@ -6,7 +6,7 @@ const targets = {
 
 let current = targets.list;
 
-async function on_submit_edit(decoration_to_update) {
+async function onSubmitEdit(decoration_to_update) {
   let decoration = readFormForDecoration();
   if (decoration != null) {
     await updateDecoration(decoration_to_update.id, decoration);
@@ -14,7 +14,7 @@ async function on_submit_edit(decoration_to_update) {
   }
 }
 
-async function on_submit_add() {
+async function onSubmitAdd() {
   let decoration = readFormForDecoration();
   if (decoration != null) {
     await createDecoration(decoration);
@@ -22,7 +22,7 @@ async function on_submit_add() {
   }
 }
 
-async function on_remove(id) {
+async function onRemove(id) {
   await deleteDecoration(id);
   togglePage(targets.list);
 }
@@ -56,11 +56,11 @@ function togglePage(target, decoration = null) {
     let callback;
     //add
     if (decoration == null) {
-      callback = on_submit_add;
+      callback = onSubmitAdd;
     }
     //edit
     else {
-      callback = () => on_submit_edit(decoration);
+      callback = () => onSubmitEdit(decoration);
     }
     prepareForm(target, callback, decoration);
     form_page.classList.remove("no-display");
@@ -69,12 +69,12 @@ function togglePage(target, decoration = null) {
   current = target;
 }
 
-function sort_decoration() {
+function sortDecoration() {
   let by_price = sort_switch.checked;
   if (by_price) {
     decorations.sort((a, b) => a.price - b.price);
   } else {
-    decorations.sort((a, b) => a.name.localeCompare(b.name));
+    decorations.sort((a, b) => a.id - b.id);
   }
   buildList(decorations);
 }
@@ -103,6 +103,7 @@ function countUpPrice() {
 function updateAndBuildList() {
   getAllDecorationsFromServer().then((val) => {
     decorations = val;
+    sortDecoration();
     buildList(decorations);
   });
 }

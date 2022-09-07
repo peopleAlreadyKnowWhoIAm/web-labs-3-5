@@ -3,7 +3,9 @@ const grid = list_page.querySelector("#grid");
 
 const price_text = document.getElementById("price-text");
 const sort_switch = document.getElementById("switch");
-sort_switch.onclick = sort_decoration;
+
+
+sort_switch.onclick = sortDecoration;
 
 const search_group = document.getElementById("search-group");
 const search_input = search_group.querySelector("#search_input");
@@ -20,7 +22,7 @@ function buildList(decoration_list) {
     newNode.querySelector("#card__edit").onclick = () =>
       togglePage("edit", decoration);
     //Delete button
-    newNode.querySelector("#card__remove").onclick = () =>on_remove(decoration.id);
+    newNode.querySelector("#card__remove").onclick = () =>onRemove(decoration.id);
 
     targetChildren.push(newNode);
   }
