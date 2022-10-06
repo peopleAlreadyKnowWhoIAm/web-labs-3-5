@@ -22,7 +22,7 @@
 }
 
 .form__input--error {
-    border-color: red;
+    border-color: red !important;
 }
 
 .form__submit {

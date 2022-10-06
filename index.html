@@ -9,6 +9,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:wght@400,600,700"
     />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="css/index.css" />
   </head>
@@ -66,10 +67,11 @@
             />
             <label for="form__usage">Usage</label>
             <select class="form__input--add form__select" id="form__usage">
-              <option value="universal">Universal</option>
-              <option value="outside decoration">Outside decoration</option>
-              <option value="for christmass">For christmass</option>
-              <option value="for windows">For windows</option>
+              <option value="UNKNOWN">Unknown</option>
+              <option value="UNIVERSAL">Universal</option>
+              <option value="OUTSIDE_DECORATION">Outside decoration</option>
+              <option value="FOR_CHRISTMASS">For christmass</option>
+              <option value="FOR_WINDOWS">For windows</option>
             </select>
             <label for="form__amount_avalaible">Avalaible amount</label>
             <input
@@ -123,7 +125,7 @@
         <h2 class="h2 no-margin">Manage decorations</h2>
         <div class="switch padding-bottom">
           <span class="switch__label bold-less-emp"
-            >Sort by the most<br />
+            >Sort by the least<br />
             expensive decoration</span
           >
           <label class="switch__container margin-left">
@@ -142,8 +144,13 @@
         <div class="grid" id="grid"></div>
       </section>
     </main>
+    <script src="scripts/logic.js"></script>
+    <script src="scripts/data-transfer.js"></script>
+    <script src="scripts/document-buttons.js"></script>
+    <script src="scripts/document-form.js"></script>
+    <script src="scripts/document-list.js"></script>
+    <script src="scripts/index.js"></script>
     <script src="scripts/model.js"></script>
-    <script src="scripts/script.js"></script>
     <div id="template" class="no-display">
       <div class="card">
         <h3 class="card__name" id="card__name">Test</h3>
